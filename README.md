@@ -1,214 +1,188 @@
 # BASH_SNOPT_install
-How to install Windows Subsystem for Linux (BASH) and SNOPT optimizer on windows PC
+  How to install Windows Subsystem for Linux (BASH) and SNOPT optimizer on windows PC
+  Bash is basically an Ubuntu operating sytsem inside your computer. 
 
-  ____                  _     
- |  _ \                | |    
- | |_) |   __ _   ___  | |__  
- |  _ <   / _` | / __| | '_ \ 
- | |_) | | (_| | \__ \ | | | |
- |____/   \__,_| |___/ |_| |_|
- ==============================
+# BASH
 To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem runs a linux computer on your machine that can access all the same files as windows.
-# Get admin priviledges for your computer
-# Install bash for windows following this guide:
-# https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10
-# quick instructions below:
-# 1) enable linux subsystem for windows
-# 2) restart
-# 3) run bash.exe in command line
-# 4) install
-# If this fails, then follow the instructions here instead:
-# https://docs.microsoft.com/en-us/windows/wsl/install-manual
-# 1) Download the distro from the command line:
-# curl.exe -L -o ubuntu-1604.appx https://aka.ms/wsl-ubuntu-1604
-# 2) browse to the location where the file was installed and double-click on it to install it
+1) Get admin priviledges for your computer. This typically involves a request to your system admin.
+2) Install WSL [following this guide](https://docs.microsoft.com/en-us/windows/wsl/install)
+3) If that fails, try doing a manual install using [this guid](https://docs.microsoft.com/en-us/windows/wsl/install-manual) or [this guide](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10)
 
-# Start bash by opening it up on the windows menue, 
-# all the rest of the commands below should be typed into the bash terminal
-# bash is basically an Ubuntu operating sytsem inside your computer. 
+  Start bash by opening it up on the windows menue, 
+  from here on out, anytime you see this:
 
-# from here on out, anytime you see this:
-$ - that means type a command into the bash promt
-# - this is a comment
-<A_WORD> - replace this with a word (no spaces please)
+  `this is a command` - that means type a command into the bash promt
 
-  ______           _       _                     
- |  ____|         | |     | |                    
- | |__      ___   | |   __| |   ___   _ __   ___ 
- |  __|    / _ \  | |  / _` |  / _ \ | '__| / __|
- | |      | (_) | | | | (_| | |  __/ | |    \__ \
- |_|       \___/  |_|  \__,_|  \___| |_|    |___/
-==================================================
-# Create a directory on your C: drive where we will install everything else and we will refer to this as <OMDAO_FOLDER>
-$ cd /mnt/c
-$ mkdir <OMDAO_FOLDER>
-# you can make this folder named whatever you want, just remember to change it in all the other commands below!!!!!
-# Both windows and linux will have full access to this folder so any changes you make on one will be refecleted on the other!
-# If you put your folder somewhere else, e.g. /myDocuments/ you will experiences file premission problems like these:
-https://askubuntu.com/questions/1049895/permission-error-copying-files-into-ubuntu-on-windows-with-windows-copy-paste
+  _<A_NAME>_ - replace this with a name of your choice (no spaces please)
 
-     /\                                                | |        
-    /  \     _ __     __ _    ___    ___    _ __     __| |   __ _ 
-   / /\ \   | '_ \   / _` |  / __|  / _ \  | '_ \   / _` |  / _` |
-  / ____ \  | | | | | (_| | | (__  | (_) | | | | | | (_| | | (_| |
- /_/    \_\ |_| |_|  \__,_|  \___|  \___/  |_| |_|  \__,_|  \__,_|
-==================================================================
-# ASCII art by: http://patorjk.com/software/taag/#p=display&h=0&f=Big&t=BashRC
-# Download Anaconda for Linux: note that anaconda itself is no longer free for commercial use.
-# Miniconda is still free for commercial use, so we will use that instead.
-# you can find a Miniconda download from https://docs.conda.io/en/latest/miniconda.html. However, this may create problems/difficulties adding Miniconda to your path.
-# An easier method is the following script:
-$ curl -O https://repo.anaconda.com/miniconda/Miniconda-3.9.1-Linux-x86_64.sh
-$ bash Miniconda-3.9.1-Linux-x86_64.sh
-# press enter and then navigate to the bottom of the output. Careful, if you navigate too far you will pass where you need to agree to terms, and it will abort the install
-# when prompted whether or not you want to prepend to the bashrc file, type yes. Alternatively, you can follow the directions below to modify the bashrc file yourself.
+# FOLDERS
+Create a directory on your C: drive where we will install everything else and we will refer to this as _<OMDAO_FOLDER>_
 
+`cd /mnt/c`
 
+`mkdir <OMDAO_FOLDER>`
 
-  _                     _       _____     _____ 
- | |                   | |     |  __ \   / ____|
- | |__     __ _   ___  | |__   | |__) | | |     
- | '_ \   / _` | / __| | '_ \  |  _  /  | |     
- | |_) | | (_| | \__ \ | | | | | | \ \  | |____ 
- |_.__/   \__,_| |___/ |_| |_| |_|  \_\  \_____|
- ================================================
-# bashRC is a file that specifies what happens when you start bash
+you can make this folder named whatever you want, just remember to change it in all the other commands below!!!!!
+Both windows and linux will have full access to this folder so any changes you make on one will be refecleted on the other!
+Do NOT put this folder in /myDocuments/. If you do, you will experiences file premission problems like [this](https://askubuntu.com/questions/1049895/permission-error-copying-files-into-ubuntu-on-windows-with-windows-copy-paste).
 
-# Setup miniconda on your path by editing bashRC
-first find out what <YOUR NAME> folder is:
-$ cd ~/..
-$ ls
+# MiniConda
+Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(.
 
-# example:
-# (mdaowork) earetski@GRSLW17090053:/$ cd ~/..
-# (mdaowork) earetski@GRSLW17090053:/home$ ls
-# earetski <-- my folder name
+`curl -O https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh`
 
-# you should copy this folder name down.
-# NOTE: replace <YOUR NAME> in the following commands with the correct folder name 
-# now we edit bashrc:
-$ sudo nano ~/.bashrc
-# if you did not type yes to prepend to bashrc file during miniconda install, scroll to the bottom of the page then add the following two lines of text:
+`bash Miniconda3-4.7.12.1-Linux-x86_64.sh`
 
-## always add miniconda to path at start of session ##
-export PATH="/home/<YOUR_NAME>/miniconda/bin:$PATH"
+Some of the newer miniconda versions don't work well with WSL but if you want to try them out you can [download them here](https://docs.conda.io/en/latest/miniconda.html).
+There may be some challenges adding miniconda to your path if you don't install using the `curl -O` method described above.
 
-# now exit bashrc by typing ctrl+X
-# type 'y' to save the edits to the file and then hit 'enter'
-# you should now be able to exit bash window (close it). Then restart it. when you type 'conda' it should find the command
-# This should enable python on your system, as well as the "conda" command should work from your command line.
+Press enter and then navigate to the bottom of the output. Careful, if you navigate too far you will pass where you need to agree to terms, and it will abort the install.
+When prompted whether or not you want to prepend to the bashrc file, type `yes`. Alternatively, you can follow the directions below to modify the bashrc file yourself.
 
-  ______                   _                                                     _   
- |  ____|                 (_)                                                   | |  
- | |__     _ __   __   __  _   _ __    ___    _ __    _ __ ___     ___   _ __   | |_ 
- |  __|   | '_ \  \ \ / / | | | '__|  / _ \  | '_ \  | '_ ` _ \   / _ \ | '_ \  | __|
- | |____  | | | |  \ V /  | | | |    | (_) | | | | | | | | | | | |  __/ | | | | | |_ 
- |______| |_| |_|   \_/   |_| |_|     \___/  |_| |_| |_| |_| |_|  \___| |_| |_|  \__|
-=======================================================================================
-# We're going to use conda environments to allow us to have multiple python environments simultaneously.
-$ conda create -n mdaowork python=3.8 
-# So lets activate the environment 
-source activate mdaowork
-# lets verify that python 3.8 is installed in this environment
-$ python --version
-# example output: 'Python 3.8.10 :: Continuum Analytics, Inc.'
-# see the help (bottom of document) if you can't get this to work
+# bashRC
+bashRC is a file that specifies what happens when you start up bash. We are going to setup miniconda on your path (if you selected not to do this automatically in the previous section) by editing bashRC
 
-  _    _               _           _                
- | |  | |             | |         | |               
- | |  | |  _ __     __| |   __ _  | |_    ___   ___ 
- | |  | | | '_ \   / _` |  / _` | | __|  / _ \ / __|
- | |__| | | |_) | | (_| | | (_| | | |_  |  __/ \__ \
-  \____/  | .__/   \__,_|  \__,_|  \__|  \___| |___/
-========= | | ======================================                                       
-          |_|
+1) find out what your home directory folder is named:
 
-# updates your system files to the latest versions
-$ sudo apt-get update
-$ sudo apt-get upgrade
+  `cd ~/..`
+  
+  `ls`
+  
+  example output:
 
-  _____                   _                                 
- |  __ \                 | |                                
- | |__) |   __ _    ___  | | __   __ _    __ _    ___   ___ 
- |  ___/   / _` |  / __| | |/ /  / _` |  / _` |  / _ \ / __|
- | |      | (_| | | (__  |   <  | (_| | | (_| | |  __/ \__ \
- |_|       \__,_|  \___| |_|\_\  \__,_|  \__, |  \___| |___/
-=======================================   __/ | ==============             
-                                         |___/
+  ```
+  (base) earetski@GRLWL2021061196:/mnt/c/OMDAO$ cd ~/..
+  (base) earetski@GRLWL2021061196:/home$ ls
+  earetski
+  ```
+  
+  we can see from this that _earetski_ is my home directory name
+  you should copy this name down.
 
-# We're going to install a bunch of smaller support programs here
+2) replace _<YOUR NAME>_ in the following commands with the correct folder name of your home directory
+now we edit bashrc:
+  
+  `sudo nano ~/.bashrc`
 
-# if pip is not already installed, we need to install it, it's a useful program for installing other programs
-$ conda install pip
-# it will either say that all the requested packages were already installed, or you should see a lot of output go by.
-# next we want to make sure that the pip version is the most up to date. Type:
-$ pip install --upgrade pip
+  scroll to the bottom of the page then add the following two lines of text:
 
-# We will also neet git to install all OpenMDAO libraries
-$ sudo apt-get install git
+  ```
+  ## always add miniconda to path at start of session ##
+  export PATH="/home/<YOUR_NAME>/miniconda/bin:$PATH"
+  ```
 
-# I think this is still a requirement
-$ pip install pyDOE2
+  now exit bashrc by typing `ctrl+X`
+  
+  type `y` to save the edits to the file and then hit `enter`
+  
+3) Verify the install by exiting the bash window (close it). Then restart it. when you type `conda` your system should report that it can find the command and will display something lik this:
+  
+  ```
+  usage: conda [-h] [-V] command ...
 
-# Install matplotlib and plotly for plotting.  
-# At least on OS X, matplotlib requires using conda to install it.
-$ conda install matplotlib
-# Miniconda may generate an error when trying to conda install matplotlib. If that is the case, try:
-$ pip install matplotlib
-# then install plotly using:
-$ pip install plotly
+  conda is a tool for managing and deploying applications, environments and packages.
 
-# these are also useful programs
-pip install PyQt5
+  Options:
+
+  positional arguments:
+    command
+      clean        Remove unused packages and caches.
+      compare      Compare packages between conda environments.
+      config       Modify configuration values in .condarc. This is modeled after the git config command. Writes to the user .condarc file (/home/earetski/.condarc) by default.
+      etc
+  ```
+
+# Environment
+  We're going to use conda environments to allow us to have multiple python environments simultaneously. That way if your are working on multiple projects, and each project has a different python version it's working with, you can keep them separate.
+  
+  `conda create -n mdaowork python=3.8` 
+
+  Activate the environment 
+
+  `source activate mdaowork`
+  
+  Verify that python 3.8 is installed in this environment
+
+  `python --version`
+  
+  example output: `'Python 3.8.10 :: Continuum Analytics, Inc.'`
+  See the help if you can't get this to work
+
+# UPDATES
+  Now we need to update your WSL system files to the latest versions
+
+  `sudo apt-get update`
+  
+  `sudo apt-get upgrade`
+  
+  You can run this every few months to pull the latest security updates.
+
+# Packages 
+  We're going to install a bunch of smaller support programs here. If pip is not already installed, we need to install it, it's a useful program for installing other programs
+
+  `conda install pip`
+
+  it will either say that all the requested packages were already installed, or you should see a lot of output go by.
+  
+  next we want to make sure that the pip version is the most up to date. Type:
+
+  `pip install --upgrade pip`
+
+  We will also neet git to install all OpenMDAO libraries
+
+  `sudo apt-get install git`
+
+  I think pyDOE2 is still a requirement as well.
+  
+  `pip install pyDOE2`
+
+  Next Install matplotlib and plotly for plotting. Note: At least on OS X, matplotlib requires using conda to install it.
+  `conda install matplotlib`
+
+  Miniconda may generate an error when trying to conda install matplotlib. If that is the case, try:
+
+  `pip install matplotlib`
+
+  then install plotly using:
+
+  `pip install plotly`
+
+  these are also useful programs
+  
+  `pip install PyQt5`
 
 
-  _                     _       _____     _____     _____   _____ 
- | |                   | |     |  __ \   / ____|   |_   _| |_   _|
- | |__     __ _   ___  | |__   | |__) | | |          | |     | |  
- | '_ \   / _` | / __| | '_ \  |  _  /  | |          | |     | |  
- | |_) | | (_| | \__ \ | | | | | | \ \  | |____     _| |_   _| |_ 
- |_.__/   \__,_| |___/ |_| |_| |_|  \_\  \_____|   |_____| |_____|
- ====================================================================
-# to activate the environment and open the <OMDAO_FOLDER> 
-# every time you open bash we need to edit bashRC again
-$ sudo nano ~/.bashrc
-# scroll down to the bottom then add these four lines:
+# bashRC Take II
+To activate the environment and open the <OMDAO_FOLDER> every time you open bash, we need to edit bashRC again
 
-## Always activate mdaowrok environment on startup ##
-source activate mdaowork
-## Always cd into <OMDAO_FOLDER> when bash starts ##
-cd /mnt/c/<OMDAO_FOLDER>
+  `sudo nano ~/.bashrc`
 
-# make sure to replace <OMDAO_FOLDER> with the real folder name!!
-# then exit and save your changes using the commands found at the bottom of the screen
+  Scroll down to the bottom then add these four lines:
+
+  ```
+  ## Always activate mdaowrok environment on startup ##
+  source activate mdaowork
+  ## Always cd into <OMDAO_FOLDER> when bash starts ##
+  cd /mnt/c/<OMDAO_FOLDER>
+  ```
+  
+  Make sure to replace _<OMDAO_FOLDER>_ with the real folder name you selected at the start of this install!! Then exit and save your changes using the commands found at the bottom of the screen (`ctrl+x`, `y`, `enter`). 
 
 
+# OpenMDAO Install
+Use pip to install OpenMDAO from its github repo the following sets of commands will create a folder inside _<OMDAO_FOLDER>_ where OpenMDAO2.0 will be installed
 
-   ____                           __  __   _____                ____  
-  / __ \                         |  \/  | |  __ \      /\      / __ \ 
- | |  | |  _ __     ___   _ __   | \  / | | |  | |    /  \    | |  | |
- | |  | | | '_ \   / _ \ | '_ \  | |\/| | | |  | |   / /\ \   | |  | |
- | |__| | | |_) | |  __/ | | | | | |  | | | |__| |  / ____ \  | |__| |
-  \____/  | .__/   \___| |_| |_| |_|  |_| |_____/  /_/    \_\  \____/ 
-========= | | ========================================================
-          |_|
-
-# Use pip to install OpenMDAO2.0 from its github repo
-# the following sets of commands will create a folder inside OMDAO_FOLDER where OpenMDAO2.0 will be installed
-$ cd /mnt/c/<OMDAO_FOLDER>
-$ git clone https://github.com/OpenMDAO/OpenMDAO.git
-$ cd openmdao
-$ pip install -e .
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>`
+  git clone https://github.com/OpenMDAO/OpenMDAO.git
+  cd openmdao
+  pip install -e .
+  ```
+  
+  when we install things with `pip install -e .`, every time we update a file in this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
 
 
-  _____             ____            _      _____                                      
- |  __ \           / __ \          | |    / ____|                                     
- | |__) |  _   _  | |  | |  _ __   | |_  | (___    _ __     __ _   _ __    ___    ___ 
- |  ___/  | | | | | |  | | | '_ \  | __|  \___ \  | '_ \   / _` | | '__|  / __|  / _ \
- | |      | |_| | | |__| | | |_) | | |_   ____) | | |_) | | (_| | | |    | (__  |  __/
- |_|       \__, |  \____/  | .__/   \__| |_____/  | .__/   \__,_| |_|     \___|  \___|
-=========== __/ | ======== | | ================== | | ===============================
-           |___/           |_|                    |_|
+# PyOptSparse Install
 # now we install a bunch of dependencies for pyoptsparse first
 
 $ pip install sqlitedict
