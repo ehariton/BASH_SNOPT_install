@@ -1,6 +1,7 @@
 # BASH_SNOPT_install
   How to install Windows Subsystem for Linux (BASH) and SNOPT optimizer on windows PC
   Bash is basically an Ubuntu operating sytsem inside your computer. 
+  You can install SNOPT If you have windows 10+. 
 
 # BASH
 To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem runs a linux computer on your machine that can access all the same files as windows.
@@ -12,7 +13,9 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
   from here on out, anytime you see this:
 
   `this is a command` - that means type a command into the bash promt
-
+  
+  `>>> this is a command in python` - this command is typed into the python command line
+  
   _<A_NAME>_ - replace this with a name of your choice (no spaces please)
 
 # FOLDERS
@@ -179,211 +182,229 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
   pip install -e .
   ```
   
-  when we install things with `pip install -e .`, every time we update a file in this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
+  Using `pip install -e .`, every time we update a file in this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
 
+
+# TestFlo
+This program is used to test the openmdao installation.
+
+  ```
+  pip install testflo
+  cd /mnt/c/<OMDAO_FOLDER>/openmdao
+  testflo .
+  ```
+
+  Example output:
+  
+  ```
+  (base) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
+  SSS...........................................................................  etc
+  
+  Passed:  1065
+  Failed:  0
+  Skipped: 153
+  ```
+  
+  Skipped tests happen due to a lack of MPI or other third party software.
+  
 
 # PyOptSparse Install
-# now we install a bunch of dependencies for pyoptsparse first
+1) We install a bunch of dependencies for pyoptsparse first
 
-$ pip install sqlitedict
-$ sudo apt-get install mpi
-$ sudo apt-get install g++
-$ sudo apt-get install mpich
-$ pip install mpi4py
-$ sudo apt-get install swig
-$ pip install mdolab-baseclasses
-# for some reason bdolab-baseclasses was failing to import automatically so we'll install it directly
+  ```
+  pip install sqlitedict
+  sudo apt-get install mpi
+  sudo apt-get install g++
+  sudo apt-get install mpich
+  pip install mpi4py
+  sudo apt-get install swig
+  pip install mdolab-baseclasses
+  ```
+For some reason bdolab-baseclasses was failing to import automatically so we'll install it directly
 
-# If you have a previous version of PyOptSparce/SNOPT you will need to remove them before continuing
-# do this by opening a python prompt
-$ python
->>> import pyoptsparse; pyoptsparse.__file__
-'/home/earetski/anaconda3/envs/mdaowork/lib/python3.6/site-packages/pyoptsparse-2.1.5-py3.6-linux-x86_64.egg/pyoptsparse/__init__.py'
-# the output from this will list the location where PyOptSparce is installed and we'll need to remove all of these locations
-# now we're going to remove that file location manually
->>> exit()
-$ rm -r /home/earetski/anaconda3/envs/mdaowork/lib/python3.6/site-packages/pyoptsparse-2.1.5-py3.6-linux-x86_64.egg/pyoptsparse
-# keep trying to locate pyoptsparse, removing it's file location until you get the error:
->>> import pyoptsparse; pyoptsparse.__file__
+2) Previously Installed PyOptSparce ?
+  If you have a previous version of PyOptSparce/SNOPT you will need to remove them before continuing. Do this by opening a python prompt:
+
+  ```
+  python
+  >>> import pyoptsparse; pyoptsparse.__file__
+  ```
+  example output: 
+  
+  ```
+  (base) earetski@GRLWL2021061196:/home$ python
+  Python 3.8.10 (default, Jun  4 2021, 15:09:15)
+  [GCC 7.5.0] :: Anaconda, Inc. on linux
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> import pyoptsparse; pyoptsparse.__file__
+  '/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'
+  ```
+  
+  where 
+  `'/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'` is your _<OLD_INSTALL_LOCATION>_
+  
+  the output from this will list the location where PyOptSparce is installed and we'll need to remove all of these locations. Now we're going to remove that file location manually. 
+  Exit out of python first by using 
+  
+  `>>> exit()`
+  
+  Remove the file using: 
+  `rm -r <OLD INSTALL LOCATION>`
+  
+  keep trying to locate pyoptsparse, removing it's file location until you get the error:
+
+  ```
+  >>> import pyoptsparse; pyoptsparse.__file__
     Traceback (most recent call last):
     File "<stdin>", line 1, in <module>
     ModuleNotFoundError: No module named 'pyoptsparse'
-# now you're ready to continue to a fresh install
+  ```
+  now you're ready to continue to a fresh install
 
-# Get pyoptsparse (a 3rd party optimizer that works well with OpenMDAO)
-$ cd /mnt/c/<OMDAO_FOLDER>
-$ git clone https://github.com/mdolab/pyoptsparse
-$ cd pyoptspare
-$ python setup.py build_ext --inplace
+3) Get pyoptsparse (a 3rd party optimizer that works well with OpenMDAO)
+  
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>
+  git clone https://github.com/mdolab/pyoptsparse
+  cd pyoptspare
+  python setup.py build_ext --inplace
+  ```
+  
+  Notice here we are not using the `pip install -e .` command here. This is because we have to build PyOptSparce from source.
 
-# If you want to install SNOPT than skip to the next section!
-# Otherwise, to skip installing SNOPT run this:
-$ cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
-$ python setup.py install
+  If you want to install SNOPT, go to the next section. 
+  
+  To skip installing SNOPT run this:
+
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
+  python setup.py install
+  ```
+
+# SNOPT
+  Get SNOPT source files. These are available for free if you work at NASA.
+
+  Brows to the location where you downloaded the snopt source files
+
+  copy the individual SNOPT src 7.7.1 files (not the folder but the individual files) 
+  
+  (do not include snopth.f if present, this file should have already been removed)
+  
+  paste those files into your pysnopt source directory (shown below)
+  
+  _c:/<OMDAO_FOLDER>/pyoptsparse/pyoptsparse/pySNOPT/source_
+
+  now we go back to the bash command line to install pyoptspare which will run SNOPT
+  
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
+  python setup.py install
+  ```
+
+  A huge amount of text will scroll by your screen.
+  
+  To check to make sure you have a compatible pyoptsparse and SNOPT version run test flow (install instructions above).
+  
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
+  testflo .
+  ```
+  
+# AGG
+  With the new WSL installs, Matplotlib is playing much more nicely with graphing, so we probably don't need to do anything with AGG anymore. I suggest you skip this section unless you are having AGG errors.
+
+  We need to set some defaults for Matplotlib so that it doesn't try to open graphs
+  Identify the location of matplotlibrc, the file that holds default settings for matplotlib
+
+  ```python -c "import matplotlib; print(matplotlib.matplotlib_fname())"```
+
+  example output: 
+  
+  `/home/earetski/anaconda3/envs/mdaowork/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc` this is your _<matplotlibrc file location>_
+
+  now we neeed to edit this file
+
+  `sudo nano <matplotlibrc file location>`
+
+  Enter your admin password. Then scroll down till you find the line where it says: 
+  
+  `# backend      : Qt5agg`
+  or this
+  `# backend      : agg`
+
+  change this line to the following by removing the Qt5 and the # tag
+  
+  `backend      : agg`
+  
+  then save the file by hitting `ctrl+X`, `y`, `enter`
 
 
-   _____   _   _    ____    _____    _______ 
-  / ____| | \ | |  / __ \  |  __ \  |__   __|
- | (___   |  \| | | |  | | | |__) |    | |   
-  \___ \  | . ` | | |  | | |  ___/     | |   
-  ____) | | |\  | | |__| | | |         | |   
- |_____/  |_| \_|  \____/  |_|         |_| 
- ===============================================
-# If you have windows 10+, then you can install SNOPT
-# Get SNOPT source files from Eliot and Justin (Free if you work at NASA)
+# Dymos
+Install DYMOS which will allow the user to solve time-based ODEs
 
-# Brows to the location where you downloaded the snopt source files
-# copy the individual SNOPT src 7.7.1 files (not the folder but the individual files) 
-# paste those files into your pysnopt source directory (shown below)
-# c:/<OMDAO_FOLDER>/pyoptsparse/pyoptsparse/pySNOPT/source
-# (do not include snopth.f if present, this file should have already been removed)
-
-# now we go back to the bash command line to install pyoptspare which will run SNOPT
-$ cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
-$ python setup.py install
-
-# To check to make sure you have a compatible pyoptsparse and SNOPT version run test flow
-$ cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
-$ testflo .
-# 
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>
+  git clone https://github.com/OpenMDAO/dymos.git
+  cd dymos
+  pip install -e .
+  ```
 
 
-     /\                    
-    /  \      __ _    __ _ 
-   / /\ \    / _` |  / _` |
-  / ____ \  | (_| | | (_| |
- /_/    \_\  \__, |  \__, |
-============  __/ | = __/ | ======
-             |___/   |___/
+# pyXDSM
+py XDSM allows for the creation of XDSM diagrams in python using LaTeX libraries. pyXDSM install instructions for ubuntu can be found [here](http://mdolab.engin.umich.edu/content/xdsm-overview) or [here](https://github.com/mdolab/pyXDSM). We want to clone pyXDSM as well as grab the required latex packages
 
-# We need to set some defaults for Matplotlib so that it doesn't try to open graphs
-# Identify the location of matplotlibrc, the file that holds default settings for matplotlib
-$ python -c "import matplotlib; print(matplotlib.matplotlib_fname())"
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>
+  git clone https://github.com/mdolab/pyXDSM.git
+  cd pyXDSM
+  pip install -e .
+  sudo apt-get install texlive-latex-base
+  sudo apt-get install texlive-latex-extra
+  sudo apt-get install texlive-latex-recommended
+  sudo apt-get install texlive-pictures
+  ```
+  
+now we need verify we have pyXDSM and the latex packages install run
+  
+  `pdflatex`
+  
+if this returns an error we need to install the full LaTeX packages
 
-# example output: /home/earetski/anaconda3/envs/mdaowork/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc
+  `sudo apt-get install texlive-full`
 
-# now we neeed to edit this file
-$ sudo nano <matplotlibrc file location>
-
-# enter your admin password
-# scroll down till you find the line where it says: 
-# backend      : Qt5agg
-# or this
-# backend      : agg
-# change this line to the following by removing the Qt5 and the # tag
-
-backend      : agg
-
-# then save the file by hitting ctrl+X, ENTER
-
-
-  _______                _     ______   _         
- |__   __|              | |   |  ____| | |        
-    | |      ___   ___  | |_  | |__    | |   ___  
-    | |     / _ \ / __| | __| |  __|   | |  / _ \ 
-    | |    |  __/ \__ \ | |_  | |      | | | (_) |
-    |_|     \___| |___/  \__| |_|      |_|  \___/
-==================================================
-# Test the openmdao installation.
-$ pip install testflo
-$ cd /mnt/c/<OMDAO_FOLDER>/openmdao
-$ testflo .
-
-# Hopefully toward the bottom of the output you see something like:
-# EXAMPLE:
-# Passed:  1065
-# Failed:  0
-# Skipped: 153
-
-# Skipped tests happen due to a lack of MPI or other third party software
-
-  _____   __     __  __  __    ____     _____ 
- |  __ \  \ \   / / |  \/  |  / __ \   / ____|
- | |  | |  \ \_/ /  | \  / | | |  | | | (___  
- | |  | |   \   /   | |\/| | | |  | |  \___ \ 
- | |__| |    | |    | |  | | | |__| |  ____) |
- |_____/     |_|    |_|  |_|  \____/  |_____/
-===============================================
-# Install DYMOS which will allow the user to solve time-based ODEs
-$ cd /mnt/c/<OMDAO_FOLDER>
-$ git clone https://github.com/OpenMDAO/dymos.git
-$ cd dymos
-$ pip install -e .
-
-                 __   __  _____     _____   __  __ 
-                 \ \ / / |  __ \   / ____| |  \/  |
-  _ __    _   _   \ V /  | |  | | | (___   | \  / |
- | '_ \  | | | |   > <   | |  | |  \___ \  | |\/| |
- | |_) | | |_| |  / . \  | |__| |  ____) | | |  | |
- | .__/   \__, | /_/ \_\ |_____/  |_____/  |_|  |_|
- | | ====  __/ | ==================================                                   
- |_|      |___/
-
-# py XDSM allows for the creation of XDSM diagrams in python using LaTeX libraries
-# pyXDSM install instructions for ubuntu:
-# http://mdolab.engin.umich.edu/content/xdsm-overview
-# https://github.com/mdolab/pyXDSM
-
-$ cd /mnt/c/<OMDAO_FOLDER>
-$ git clone https://github.com/mdolab/pyXDSM.git
-$ cd pyXDSM
-$ pip install -e .
-
-# now we need pdflatex to work
-$ pdflatex
-# if this returns an error we need to install LaTeX packages
-$ sudo apt-get install texlive-full
-
-# only use the links below if you don't have enough storage space for the full install
-$ sudo apt-get install texlive-latex-base
-$ sudo apt-get install texlive-latex-extra
-$ sudo apt-get install texlive-latex-recommended
-$ sudo apt-get install texlive-pictures
-
-  _____                                          
- |_   _|                                         
-   | |    _ __ ___     __ _    __ _    ___   ___ 
-   | |   | '_ ` _ \   / _` |  / _` |  / _ \ / __|
-  _| |_  | | | | | | | (_| | | (_| | |  __/ \__ \
- |_____| |_| |_| |_|  \__,_|  \__, |  \___| |___/
-============================== __/ |  ============           
-                              |___/  
-Ubuntu on Windows does not allow pop-up windows by default. This makes it hard when using plt.show() in matplotlib. Hours could be spent saving and opening files instead of a simple pop-up window.
-These steps will correct this:
-Download Xming from https://sourceforge.net/projects/xming/
-Note: You will need elevated priveldges to install this. Request this through IdMax (EUSO Elevated Privileges). Be sure to take the training in SATERN for you to be able to have these preveldges. The course is ITS-002-09 (in SATERN).
+# XMING
+  Things have gotten better with the more recent versions of WSL. We are advising people not to worry about the below instructions unless you are having difficulty running `plt.show()` when running python / matplotlib in bash.
+  
+  Ubuntu on Windows does not allow pop-up windows by default. This makes it hard when using plt.show() in matplotlib. Hours could be spent saving and opening files instead of a simple pop-up window. These steps will correct this:
+[Download Xming](https://sourceforge.net/projects/xming/). 
 Note that when you install this, your computer will not allow you so save the file in the default location that Xming wants to place itself. Instead, find another location on your local machine. 'Documents' has worked for me. You may need to 'ignore' a few downloads. It will still work without those files. Be sure to run the XLaunch.exe file. Xming needs to be running in order for plots to display. Think about making it so your computer runs this program during startup. See directions at the bottom of this tutorial.
-Install the tk package:
-sudo apt-get install python3-tk
-(remove the 3 if using Python 2)
-Next, type in the Ubuntu window:
-cd ~
-nano .bashrc
-Note: you may need to install nano for the above line to work. You can do this by typing:
-sudo apt install nano
-This will open up .bashrc for you to edit. At the very bottom of the file, add the following:
-## Make it so Ubuntu will open plots in matplotlib
-export DISPLAY=localhost:0.0
-## Tell MatPlotLib to use Tk Package
-export MPLBACKEND="TkAgg"
-Then hit ctrl+x on your keyboard to save and close the file. You will need to close and reopen your Ubuntu window for this to take effect. You should now be able to use matplotlib's plt.show() function!
-SETUP FOR RUNNING Xming AT COMPUTER STARTUP:
-Go to where you saved Xming on your computer (if you forgot, you can always just search for it) and open the file location and run XLaunch.exe. You will have a window pop up for you to select some options. Select 'Multiple Windows' and make sure the Display number is 0
-Click Next then select 'Start no client', then next. Select 'Clipboard' then next. Last, click 'Save configuration' and save it as 'config.xlaunch' (no quotes). You now saved the conifuration Xming will run every time you open it. Now you're going to want to create a shortcut for XLaunch.exe file to your startup program list. To do this, do to where your startup programs are located on your machine. That should be in the path below:
-C:\Users\rpthacke\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
-(note: you'll have a different username than me, replace rpthacke with yours)
+Install the tk package, note: remove the 3 if using Python 2:
+
+  `sudo apt-get install python3-tk`
+
+  `sudo nano ~/.bashrc`
+  
+  Add add the following to the bottom of bashRC:
+  
+  ```
+  ## Make it so Ubuntu will open plots in matplotlib
+  export DISPLAY=localhost:0.0
+  ## Tell MatPlotLib to use Tk Package
+  export MPLBACKEND="TkAgg"
+  ``
+  
+  Exit and save the file (`ctrol+X`,`y`,`enter). You will need to close and reopen your Ubuntu window for this to take effect. You should now be able to use matplotlib's plt.show() function!
+
+Setup XMING to run at computer startup. Go to where you saved Xming on your computer (if you forgot, you can always just search for it) and open the file location and run XLaunch.exe. You will have a window pop up for you to select some options. Select 'Multiple Windows' and make sure the Display number is 0. Click Next then select 'Start no client', then next. Select 'Clipboard' then next. Last, click 'Save configuration' and save it as 'config.xlaunch' (no quotes). You now saved the conifuration Xming will run every time you open it. Now you're going to want to create a shortcut for XLaunch.exe file to your startup program list. To do this, do to where your startup programs are located on your machine. That should be in the path below:
+
+  _C:\Users\<YOUR_USER_NAME>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup_
+  
+(note: you'll have a different username than me, replace <YOUR_USER_NAME> with yours)
 In this location, place the Xlaunch.exe shortcut. Then right click on it and select 'Properties'. Modify the Target line under the 'Shortcut' tab. Change it to point where you have the Xming location saved along with -run "config.xlaunch". For me, it reads as:
-C:\Users\rpthacke\Documents\Xming\XLaunch.exe -run "config.xlaunch"
+C:\Users\<YOUR_USER_NAME>\Documents\Xming\XLaunch.exe -run "config.xlaunch"
 Now click 'OK' and everything is set to go! 
 
-  _    _          _         
- | |  | |        | |        
- | |__| |   ___  | |  _ __  
- |  __  |  / _ \ | | | '_ \ 
- | |  | | |  __/ | | | |_) |
- |_|  |_|  \___| |_| | .__/ 
-==================== | | ===    
-                     |_|
+# HELP
 
 ### Help 1 ###
 # Sometimes there are problems with mpi
