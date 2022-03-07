@@ -209,17 +209,7 @@ This program is used to test the openmdao installation.
   
   Skipped tests happen due to a lack of MPI or other third party software.
   
-
-# PyOptSparse Install
-1) We install a bunch of dependencies for pyoptsparse first
-
-  ```
-  sudo apt-get install mpi g++ mpich swig
-  pip install sqlitedict mpi4py mdolab-baseclasses
-  ```
-For some reason bdolab-baseclasses was failing to import automatically so we'll install it directly
-
-2) Previously Installed PyOptSparce ?
+# Remove Old PyOptSparse Install (if required)
   If you have a previous version of PyOptSparce/SNOPT you will need to remove them before continuing. Do this by opening a python prompt:
 
   ```
@@ -256,8 +246,18 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
     ModuleNotFoundError: No module named 'pyoptsparse'
   ```
   now you're ready to continue to a fresh install
+  
+  
+# PyOptSparse Install
+1) We install a bunch of dependencies for pyoptsparse first
 
-3) Get pyoptsparse (a 3rd party optimizer that works well with OpenMDAO)
+  ```
+  sudo apt-get install mpi g++ mpich swig
+  pip install sqlitedict mpi4py mdolab-baseclasses
+  ```
+For some reason bdolab-baseclasses was failing to import automatically so we'll install it directly
+
+2) Get pyoptsparse (a 3rd party optimizer that works well with OpenMDAO)
   
   ```
   cd /mnt/c/<OMDAO_FOLDER>
