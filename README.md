@@ -8,6 +8,8 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
 1) Get admin priviledges for your computer. This typically involves a request to your system admin.
 2) Install WSL [following this guide](https://docs.microsoft.com/en-us/windows/wsl/install)
 3) If that fails, try doing a manual install using [this guid](https://docs.microsoft.com/en-us/windows/wsl/install-manual) or [this guide](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10)
+4) Once the WSL install is successful, your computer will restart and the WSL window will open and ask for a Admin username and password.
+5) After setting this, close the WSL window to save these settings and then re-open it. If you do not close the window and re-open, you will have trouble installing miniconda.
 
   Start bash by opening it up on the windows menue, 
   from here on out, anytime you see this:
