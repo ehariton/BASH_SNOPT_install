@@ -73,7 +73,7 @@ now we edit bashrc:
 
   ```
   ## always add miniconda to path at start of session ##
-  export PATH="/home/<YOUR_NAME>/miniconda/bin:$PATH"
+  export PATH="/home/**<YOUR_NAME>**/miniconda3/bin:$PATH"
   ```
 
   now exit bashrc by typing `ctrl+X`
