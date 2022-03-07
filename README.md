@@ -28,12 +28,14 @@ Create a directory on your C: drive where we will install everything else and we
 
 `mkdir <OMDAO_FOLDER>`
 
+`cd <OMDAO_FOLDER>`
+
 you can make this folder named whatever you want, just remember to change it in all the other commands below!!!!!
 Both windows and linux will have full access to this folder so any changes you make on one will be refecleted on the other!
 Do NOT put this folder in /myDocuments/. If you do, you will experiences file premission problems like [this](https://askubuntu.com/questions/1049895/permission-error-copying-files-into-ubuntu-on-windows-with-windows-copy-paste).
 
 # MiniConda
-Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(.
+Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your _<MDAO_FOLDER>_ or some other folder. If you try to download it in `/home/` it will say permission denied.
 
 `curl -O https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh`
 
