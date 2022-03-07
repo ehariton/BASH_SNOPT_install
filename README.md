@@ -180,7 +180,7 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
   ```
   cd /mnt/c/<OMDAO_FOLDER>`
   git clone https://github.com/OpenMDAO/OpenMDAO.git
-  cd openmdao
+  cd OpenMDAO
   pip install -e .
   ```
   
