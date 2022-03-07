@@ -228,6 +228,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   ```
   python
   >>> import pyoptsparse; pyoptsparse.__file__
+  >>> exit()
   ```
   example output: 
   
@@ -238,15 +239,13 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   Type "help", "copyright", "credits" or "license" for more information.
   >>> import pyoptsparse; pyoptsparse.__file__
   '/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'
+  >>> exit()
   ```
   
   where 
   `'/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'` is your _<OLD_INSTALL_LOCATION>_
   
   the output from this will list the location where PyOptSparce is installed and we'll need to remove all of these locations. Now we're going to remove that file location manually. 
-  Exit out of python first by using 
-  
-  `>>> exit()`
   
   Remove the file using: 
   `rm -r <OLD INSTALL LOCATION>`
