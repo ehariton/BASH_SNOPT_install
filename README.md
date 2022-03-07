@@ -21,6 +21,15 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
   
   _<A_NAME>_ - replace this with a name of your choice (no spaces please)
 
+# UPDATES
+  Now we need to update your WSL system files to the latest versions
+
+  `sudo apt-get update`
+  
+  `sudo apt-get upgrade`
+  
+  You can run this every few months to pull the latest security updates.
+  
 # FOLDERS
 Create a directory on your C: drive where we will install everything else and we will refer to this as _<OMDAO_FOLDER>_
 
@@ -35,7 +44,7 @@ Both windows and linux will have full access to this folder so any changes you m
 Do NOT put this folder in /myDocuments/. If you do, you will experiences file premission problems like [this](https://askubuntu.com/questions/1049895/permission-error-copying-files-into-ubuntu-on-windows-with-windows-copy-paste).
 
 # MiniConda
-Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your _<MDAO_FOLDER>_ or some other folder. If you try to download it in `/home/` it will say permission denied.
+Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your _<MDAO_FOLDER>_ or some other folder. If you try to download it in `/home/` it will say permission denied. 
 
 `curl -O https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh`
 
@@ -115,15 +124,6 @@ now we edit bashrc:
   
   example output: `'Python 3.8.10 :: Continuum Analytics, Inc.'`
   See the help if you can't get this to work
-
-# UPDATES
-  Now we need to update your WSL system files to the latest versions
-
-  `sudo apt-get update`
-  
-  `sudo apt-get upgrade`
-  
-  You can run this every few months to pull the latest security updates.
 
 # Packages 
   We're going to install a bunch of smaller support programs here. If pip is not already installed, we need to install it, it's a useful program for installing other programs
