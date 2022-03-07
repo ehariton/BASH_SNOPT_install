@@ -273,7 +273,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
 
   If you want to install SNOPT, go to the next section. 
   
-  To skip installing SNOPT run this:
+  If you DO NOT want to instal SNOPT run this:
 
   ```
   cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
