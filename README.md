@@ -69,11 +69,11 @@ now we edit bashrc:
   
   `sudo nano ~/.bashrc`
 
-  scroll to the bottom of the page then add the following two lines of text:
+  scroll to the bottom of the page then add the following two lines of text. Make sure to replace _<YOUR_NAME>_ with the home directory you found in step 1:
 
   ```
   ## always add miniconda to path at start of session ##
-  export PATH="/home/**<YOUR_NAME>**/miniconda3/bin:$PATH"
+  export PATH="/home/<YOUR_NAME>/miniconda3/bin:$PATH"
   ```
 
   now exit bashrc by typing `ctrl+X`
