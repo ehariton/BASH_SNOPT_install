@@ -192,7 +192,7 @@ This program is used to test the openmdao installation.
 
   ```
   pip install testflo
-  cd /mnt/c/<OMDAO_FOLDER>/openmdao
+  cd /mnt/c/<OMDAO_FOLDER>/OpenMDAO
   testflo .
   ```
 
