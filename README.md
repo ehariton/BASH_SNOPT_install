@@ -39,7 +39,7 @@ Create a directory on your C: drive where we will install everything else and we
 
 ```
 cd /mnt/c
-mkdir OMDAO`
+mkdir OMDAO
 cd OMDAO
 
 ```
