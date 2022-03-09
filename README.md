@@ -104,18 +104,18 @@ To activate the environment and open the OMDAO folder every time you open bash, 
     
 
 # Packages 
-  We're going to install a bunch of smaller support programs here.  Install matplotlib and plotly for plotting. Note: At least on OS X, matplotlib requires using conda to install it.
+  We're going to install a bunch of smaller support programs here.  Install matplotlib and plotly for plotting. Note: At least on OS X, matplotlib requires using conda to install it. Then we install plotly which is a useful plotting library. Testflo is used to test components in the OpenMDAO installation:
   
-  `conda install matplotlib -y`
+  ```
+  conda install matplotlib -y
+  pip install plotly testflo
+  
+  ```
 
 Miniconda may generate an error when trying to conda install matplotlib. If that is the case, try:
 
   `pip install matplotlib`
-
-Then we install plotly which is a useful plotting library. Testflo is used to test components in the OpenMDAO installation:
-
-  `pip install plotly testflo`
-
+  
 # OpenMDAO Install
 Use pip to install OpenMDAO from its github repo the following sets of commands will create a folder inside OMDAO folder where OpenMDAO2.0 will be installed
 
