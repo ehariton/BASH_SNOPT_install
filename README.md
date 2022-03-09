@@ -199,7 +199,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   ```
   cd /mnt/c/OMDAO
   git clone https://github.com/mdolab/pyoptsparse
-  cd pyoptspare
+  cd pyoptsparse
   python setup.py build_ext --inplace
   
   ```
