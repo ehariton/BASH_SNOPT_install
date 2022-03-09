@@ -161,10 +161,10 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   
   
   *(mdaowork) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
-  SSS...........................................................................  etc
-  Passed:  1065
-  Failed:  0
-  Skipped: 153*
+  *SSS...........................................................................  etc
+  *Passed:  1065
+  *Failed:  0
+  *Skipped: 153
   
   Skipped tests happen due to a lack of MPI or other third party software.
   
