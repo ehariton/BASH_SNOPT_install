@@ -268,6 +268,10 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
 # Dymos
 Install DYMOS which will allow the user to solve time-based ODEs
 
+For users we suggest using 
+`pip install dymos`
+
+For developers we recommend building from source:
   ```
   cd /mnt/c/OMDAO
   git clone https://github.com/OpenMDAO/dymos.git
