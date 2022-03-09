@@ -201,6 +201,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   git clone https://github.com/mdolab/pyoptsparse
   cd pyoptspare
   python setup.py build_ext --inplace
+  
   ```
   
   Notice here we are not using the `pip install -e .` command here. This is because we have to build PyOptSparce from source.
