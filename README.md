@@ -26,9 +26,11 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
 # UPDATES
   Now we need to update your WSL system files to the latest versions
 
-  `sudo apt-get update`
+  ```
+  sudo apt-get update
+  sudo apt-get upgrade -y
   
-  `sudo apt-get upgrade -y`
+  ```
   
   You can run this every few months to pull the latest security updates.
   
