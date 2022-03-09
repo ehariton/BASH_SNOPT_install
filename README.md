@@ -178,7 +178,7 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   example output: 
   
   ```
-  (base) earetski@GRLWL2021061196:/home$ python
+  (mdaowork) earetski@GRLWL2021061196:/home$ python
   Python 3.8.10 (default, Jun  4 2021, 15:09:15)
   [GCC 7.5.0] :: Anaconda, Inc. on linux
   Type "help", "copyright", "credits" or "license" for more information.
