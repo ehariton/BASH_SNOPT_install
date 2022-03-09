@@ -2,15 +2,16 @@
   How to install Windows Subsystem for Linux (BASH) and SNOPT optimizer on windows PC
   Bash is basically an Ubuntu operating sytsem inside your computer. 
   You can install SNOPT If you have windows 10+. 
+  These install instructions were verified with Windows 10.0.19042
 
 # BASH
 To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem runs a linux computer on your machine that can access all the same files as windows.
 1) Get admin priviledges for your computer. This typically involves a request to your system admin.
-2) Install WSL [following this guide](https://docs.microsoft.com/en-us/windows/wsl/install)
-3) If that fails, try doing a manual install using [this guid](https://docs.microsoft.com/en-us/windows/wsl/install-manual) or [this guide](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10)
-4) Once the WSL install is successful, your computer will restart and the WSL window will open and ask for a Admin username and password.
-5) After setting this, close the WSL window to save these settings.
-6) Open WSL in Administrator Mode using. If you do not close the window and re-open, you will have trouble installing miniconda, and pyoptsparse. You're going to want to run as admin for the rest of the install process.
+2) Open a command prompt in admin mode and then type `wsl --install -d Ubuntu`
+3) If that fails, try [following this guide](https://docs.microsoft.com/en-us/windows/wsl/install), or doing a manual install using [this guid](https://docs.microsoft.com/en-us/windows/wsl/install-manual) or [this guide](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10)
+5) Once the WSL install is successful, the WSL window will open and ask for a Unix username and password.
+6) ? After setting this, close the WSL window to save these settings.
+7) ? Open WSL in Administrator Mode using. If you do not close the window and re-open, you will have trouble installing miniconda, and pyoptsparse. You're going to want to run as admin for the rest of the install process.
 ![ubuntu_admin](https://user-images.githubusercontent.com/11527849/157071996-f7d38da7-b126-4a5d-9f6b-a74f277e3f9d.png)
 7) Disconnect from the VPN. Some users have had issues with their WSL installations being able to access the internet while connected to the VPN.
 8) From here on out, anytime you see this:
@@ -26,7 +27,7 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
 
   `sudo apt-get update`
   
-  `sudo apt-get upgrade`
+  `sudo apt-get upgrade -y`
   
   You can run this every few months to pull the latest security updates.
   
@@ -44,7 +45,7 @@ Both windows and linux will have full access to this folder so any changes you m
 Do NOT put this folder in /myDocuments/. If you do, you will experiences file premission problems like [this](https://askubuntu.com/questions/1049895/permission-error-copying-files-into-ubuntu-on-windows-with-windows-copy-paste).
 
 # MiniConda
-Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your _<MDAO_FOLDER>_ or some other folder. If you try to download it in `/home/` it will say permission denied. 
+Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your _<MDAO_FOLDER>_ or some other folder. If you try to download it in `/home/` it will say _Warning: Permission Denied_. 
 
 `curl -O https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh`
 
@@ -53,77 +54,48 @@ Download Miniconda for Linux: note that anaconda itself is no longer free for co
 Some of the newer miniconda versions don't work well with WSL but if you want to try them out you can [download them here](https://docs.conda.io/en/latest/miniconda.html).
 There may be some challenges adding miniconda to your path if you don't install using the `curl -O` method described above.
 
-Press enter and then navigate to the bottom of the output. Careful, if you navigate too far you will pass where you need to agree to terms, and it will abort the install.
-When prompted whether or not you want to prepend to the bashrc file, type `yes`. Alternatively, you can follow the directions below to modify the bashrc file yourself.
+Press enter and then navigate to the bottom of the output and type 'yes' to install.
 
-# bashRC
-bashRC is a file that specifies what happens when you start up bash. We are going to setup miniconda on your path (if you selected not to do this automatically in the previous section) by editing bashRC
+When prompted _Do you wish the installer to initialize Miniconda3 by running conda init?_ type `yes`
 
-1) find out what your home directory folder is named:
+Pin WSL to your taskbar by Right clicking it in the windows task bar and selecting _Pin to Task Bar_
 
-  `cd ~/..`
-  
-  `ls`
-  
-  example output:
-
-  ```
-  (base) earetski@GRLWL2021061196:/mnt/c/OMDAO$ cd ~/..
-  (base) earetski@GRLWL2021061196:/home$ ls
-  earetski
-  ```
-  
-  we can see from this that _earetski_ is my home directory name
-  you should copy this name down.
-
-2) replace _<YOUR NAME>_ in the following commands with the correct folder name of your home directory
-now we edit bashrc:
-  
-  `sudo nano ~/.bashrc`
-
-  scroll to the bottom of the page then add the following two lines of text. Make sure to replace _<YOUR_NAME>_ with the home directory you found in step 1:
-
-  ```
-  ## always add miniconda to path at start of session ##
-  export PATH="/home/<YOUR_NAME>/miniconda3/bin:$PATH"
-  ```
-
-  now exit bashrc by typing `ctrl+X`
-  
-  type `y` to save the edits to the file and then hit `enter`
-  
-3) Verify the install by exiting the bash window (close it). Then restart it. when you type `conda` your system should report that it can find the command and will display something lik this:
-  
-  ```
-  usage: conda [-h] [-V] command ...
-
-  conda is a tool for managing and deploying applications, environments and packages.
-
-  Options:
-
-  positional arguments:
-    command
-      clean        Remove unused packages and caches.
-      compare      Compare packages between conda environments.
-      config       Modify configuration values in .condarc. This is modeled after the git config command. Writes to the user .condarc file (/home/earetski/.condarc) by default.
-      etc
-  ```
+Then close WSL and reopen it.
 
 # Environment
   We're going to use conda environments to allow us to have multiple python environments simultaneously. That way if your are working on multiple projects, and each project has a different python version it's working with, you can keep them separate.
   
-  `conda create -n mdaowork python=3.8` 
+  `conda create -n mdaowork python=3.8 -y` 
 
   Activate the environment 
 
-  `source activate mdaowork`
+  `conda activate mdaowork`
   
   Verify that python 3.8 is installed in this environment
 
   `python --version`
   
-  example output: `'Python 3.8.10 :: Continuum Analytics, Inc.'`
+  example output: `'Python 3.8.12'`
   See the help if you can't get this to work
+
+# bashRC
+To activate the environment and open the <OMDAO_FOLDER> every time you open bash, we need to edit bashRC
+
+  `sudo nano ~/.bashrc`
+
+  Scroll down to the bottom then add these four lines. Remember to replace _<OMDAO_FOLDER>_ with your folder name:
+
+  ```
+  ## Always activate mdaowrok environment on startup ##
+  conda activate mdaowork
+  ## Always cd into <OMDAO_FOLDER> when bash starts ##
+  cd /mnt/c/<OMDAO_FOLDER>
+  ```
+  
+  Then exit and save your changes using the commands found at the bottom of the screen (`ctrl+x`, `y`, `enter`). 
+  
+  Verify this has worked by restarting WSL. It should drop you in your environment, indicated by the _(mdaowork)_.
+    
 
 # Packages 
   We're going to install a bunch of smaller support programs here. If pip is not already installed, we need to install it, it's a useful program for installing other programs
@@ -160,28 +132,13 @@ now we edit bashrc:
   `pip install PyQt5`
 
 
-# bashRC Take II
-To activate the environment and open the <OMDAO_FOLDER> every time you open bash, we need to edit bashRC again
-
-  `sudo nano ~/.bashrc`
-
-  Scroll down to the bottom then add these four lines:
-
-  ```
-  ## Always activate mdaowrok environment on startup ##
-  source activate mdaowork
-  ## Always cd into <OMDAO_FOLDER> when bash starts ##
-  cd /mnt/c/<OMDAO_FOLDER>
-  ```
-  
-  Make sure to replace _<OMDAO_FOLDER>_ with the real folder name you selected at the start of this install!! Then exit and save your changes using the commands found at the bottom of the screen (`ctrl+x`, `y`, `enter`). 
 
 
 # OpenMDAO Install
 Use pip to install OpenMDAO from its github repo the following sets of commands will create a folder inside _<OMDAO_FOLDER>_ where OpenMDAO2.0 will be installed
 
   ```
-  cd /mnt/c/<OMDAO_FOLDER>`
+  cd /mnt/c/<OMDAO_FOLDER>
   git clone https://github.com/OpenMDAO/OpenMDAO.git
   cd OpenMDAO
   pip install -e .
