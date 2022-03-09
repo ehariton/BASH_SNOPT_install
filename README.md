@@ -77,6 +77,8 @@ Then close WSL and reopen it.
   
   ```
   
+If you get the error: _No packages found in current linux-64 channels matching: python 3.8*_. The resoultion should be to run `conda install anaconda-clean` and then re-trying the original command.
+  
   Verify that python 3.8 is installed in this environment
 
   `python --version`
@@ -306,6 +308,50 @@ If _pdflatex_ returns an error we need to install the full LaTeX packages
 
   `sudo apt-get install texlive-full`
 
+# You are Done! All the remaining packages are optional
+
+# Juila Install
+$ git clone git@github.com:dingraha/CCBlade.jl
+
+# start julia
+$ julia
+julia> ]
+pkg> status
+# this lists all the packages installed in julia
+# update paths to CCBlade and OpenMDAO
+# you can type help to get help
+# navigate to <OpenMDAO> folder above where CCBLade is cloned
+pkg> ;
+# or
+julai> ;
+shell> cd /mnt/c/<OpenMDAO>
+# add dependant packages
+pkg> add FLOWMath
+# install packages that were just cloned
+pkg> develop CCBlade.jl/
+# develop is like pip install -e . 
+
+
+pkg> status
+# (v1.2) pkg> status
+#    Status `~/.julia/environments/v1.2/Project.toml`
+#  [e1828068] CCBlade v0.1.0 [`../../../../../mnt/c/OMDAO/CCBlade.jl`]
+#  [6cb5d3fb] FLOWMath v0.2.1
+#  [2d3f9b48] OpenMDAO v0.1.0 [`../../../../../mnt/c/OMDAO/OpenMDAO.jl`]
+#  [438e738f] PyCall v1.91.2
+#  [d330b81b] PyPlot v2.8.2
+
+# navigate to aviary_quadrotor/aviary_quadrotor/subsystems/rotor  using the shell command
+# then install the CCBladeAviaryQuadrotor.jl project/project
+pkg> develop CCBladeAviaryQuadrotor.jl/
+pkg> status
+# [e1828068] CCBlade v0.1.0 [`../../../../../mnt/c/OMDAO/CCBlade.jl`]
+#   [6b0330fc] CCBladeAviaryQuadrotor v0.1.0 [`../../../../../mnt/c/OMDAO/aviary_quadrotor/aviary_quadrotor/subsystems/rotor/CCBladeAviaryQuadrotor.jl`]
+#   [6cb5d3fb] FLOWMath v0.2.1
+#   [2d3f9b48] OpenMDAO v0.1.0 [`../../../../../mnt/c/OMDAO/OpenMDAO.jl`]
+#   [438e738f] PyCall v1.91.2
+#   [d330b81b] PyPlot v2.8.2
+  
 # AGG
   With the new WSL installs, Matplotlib is playing much more nicely with graphing, so we probably don't need to do anything with AGG anymore. I suggest you skip this section unless you are having AGG errors.
 
@@ -370,7 +416,7 @@ Now click 'OK' and everything is set to go!
 
 # HELP
 
-### Help 1 ###
+## MPI Install problems
 # Sometimes there are problems with mpi
 # check your Ubuntu installation version 
 $ lsb_release -a
@@ -381,8 +427,6 @@ $ export KMP_AFFINITY=disabled
 # if that doesn't work try
 # $ KMP_AFFINITY=disabled
 
-
-### Help 2 ###
 # Make sure that your computer name is listed as one of your hosts 
 # incase you get wierd MPI errors like:
 # sudo:unable to resolve host
@@ -408,69 +452,3 @@ $ sudo nano /etc/hosts
 # add the line:
 $ 127.0.1.1 <hostname>
 
-
-### Help 3 ###
-# If you have trouble and are stuck we suggest the following resources:
-www.google.com
-
-
-### Help 4 ###
-# If you want this doc to be updated, please send us an email
-eliot.d.aretskin-hariton@nasa.gov
-
-
-
-### Help 5 ###
-Juila Install
-$ git clone git@github.com:dingraha/CCBlade.jl
-
-# start julia
-$ julia
-julia> ]
-pkg> status
-# this lists all the packages installed in julia
-# update paths to CCBlade and OpenMDAO
-# you can type help to get help
-# navigate to <OpenMDAO> folder above where CCBLade is cloned
-pkg> ;
-# or
-julai> ;
-shell> cd /mnt/c/<OpenMDAO>
-# add dependant packages
-pkg> add FLOWMath
-# install packages that were just cloned
-pkg> develop CCBlade.jl/
-# develop is like pip install -e . 
-
-
-pkg> status
-# (v1.2) pkg> status
-#    Status `~/.julia/environments/v1.2/Project.toml`
-#  [e1828068] CCBlade v0.1.0 [`../../../../../mnt/c/OMDAO/CCBlade.jl`]
-#  [6cb5d3fb] FLOWMath v0.2.1
-#  [2d3f9b48] OpenMDAO v0.1.0 [`../../../../../mnt/c/OMDAO/OpenMDAO.jl`]
-#  [438e738f] PyCall v1.91.2
-#  [d330b81b] PyPlot v2.8.2
-
-# navigate to aviary_quadrotor/aviary_quadrotor/subsystems/rotor  using the shell command
-# then install the CCBladeAviaryQuadrotor.jl project/project
-pkg> develop CCBladeAviaryQuadrotor.jl/
-pkg> status
-# [e1828068] CCBlade v0.1.0 [`../../../../../mnt/c/OMDAO/CCBlade.jl`]
-#   [6b0330fc] CCBladeAviaryQuadrotor v0.1.0 [`../../../../../mnt/c/OMDAO/aviary_quadrotor/aviary_quadrotor/subsystems/rotor/CCBladeAviaryQuadrotor.jl`]
-#   [6cb5d3fb] FLOWMath v0.2.1
-#   [2d3f9b48] OpenMDAO v0.1.0 [`../../../../../mnt/c/OMDAO/OpenMDAO.jl`]
-#   [438e738f] PyCall v1.91.2
-#   [d330b81b] PyPlot v2.8.2
-
-
-### HELP 6 ###
-When using miniconda, I wasn't able to install python 3.8 I got the error:
-# earetski@GRLWL2021061196:/usr/bin$ conda create -n mdaowork python=3.8
-Fetching package metadata: ....
-Error: No packages found in current linux-64 channels matching: python 3.8*
-
-Resolution: 
-# conda install anaconda-clean
-
-after installing the above I was able to find the correct python version
