@@ -71,11 +71,11 @@ Then close WSL and reopen it.
 # Environment
   We're going to use conda environments to allow us to have multiple python environments simultaneously. That way if your are working on multiple projects, and each project has a different python version it's working with, you can keep them separate.
   
-  `conda create -n mdaowork python=3.8 -y` 
-
-  Activate the environment 
-
-  `conda activate mdaowork`
+  ```
+  conda create -n mdaowork python=3.8 -y
+  conda activate mdaowork
+  
+  ```
   
   Verify that python 3.8 is installed in this environment
 
