@@ -51,9 +51,11 @@ Do NOT put this folder in /myDocuments/. If you do, you will experiences file pr
 # MiniConda
 Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your _<MDAO_FOLDER>_ or some other folder. If you try to download it in `/home/` it will say _Warning: Permission Denied_. 
 
-`curl -O https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh`
+```
+curl -O https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh
+bash Miniconda3-4.7.12.1-Linux-x86_64.sh
 
-`bash Miniconda3-4.7.12.1-Linux-x86_64.sh`
+```
 
 Some of the newer miniconda versions don't work well with WSL but if you want to try them out you can [download them here](https://docs.conda.io/en/latest/miniconda.html).
 There may be some challenges adding miniconda to your path if you don't install using the `curl -O` method described above.
