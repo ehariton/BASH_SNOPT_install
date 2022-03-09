@@ -129,7 +129,7 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
   Example output:
   
   ```
-  (base) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
+  (mdaowork) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
   SSS...........................................................................  etc
   
   Passed:  1065
@@ -182,7 +182,7 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
 1) We install a bunch of dependencies for pyoptsparse first
 
   ```
-  sudo apt-get install mpi g++ mpich swig
+  sudo apt-get install mpi g++ mpich swig -y.
   pip install sqlitedict mpi4py mdolab-baseclasses
   ```
 For some reason bdolab-baseclasses was failing to import automatically so we'll install it directly
@@ -229,13 +229,41 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
 
   A huge amount of text will scroll by your screen.
   
-  To check to make sure you have a compatible pyoptsparse and SNOPT version run test flow (install instructions above).
+  To check to make sure you have a compatible pyoptsparse and SNOPT version run test flow in the pyoptsparse folder.
   
+  `testflo .`
+  
+
+# Dymos
+Install DYMOS which will allow the user to solve time-based ODEs
+
   ```
-  cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
-  testflo .
+  cd /mnt/c/<OMDAO_FOLDER>
+  git clone https://github.com/OpenMDAO/dymos.git
+  cd dymos
+  pip install -e .
+  ```
+
+
+# pyXDSM
+py XDSM allows for the creation of XDSM diagrams in python using LaTeX libraries. pyXDSM install instructions for ubuntu can be found [here](http://mdolab.engin.umich.edu/content/xdsm-overview) or [here](https://github.com/mdolab/pyXDSM). We want to clone pyXDSM as well as grab the required latex packages
+
+  ```
+  cd /mnt/c/<OMDAO_FOLDER>
+  git clone https://github.com/mdolab/pyXDSM.git
+  cd pyXDSM
+  pip install -e .
+  sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-pictures
   ```
   
+now we need verify we have pyXDSM and the latex packages install run
+  
+  `pdflatex`
+  
+if this returns an error we need to install the full LaTeX packages
+
+  `sudo apt-get install texlive-full`
+
 # AGG
   With the new WSL installs, Matplotlib is playing much more nicely with graphing, so we probably don't need to do anything with AGG anymore. I suggest you skip this section unless you are having AGG errors.
 
@@ -265,39 +293,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   then save the file by hitting `ctrl+X`, `y`, `enter`
 
 
-# Dymos
-Install DYMOS which will allow the user to solve time-based ODEs
-
-  ```
-  cd /mnt/c/<OMDAO_FOLDER>
-  git clone https://github.com/OpenMDAO/dymos.git
-  cd dymos
-  pip install -e .
-  ```
-
-
-# pyXDSM
-py XDSM allows for the creation of XDSM diagrams in python using LaTeX libraries. pyXDSM install instructions for ubuntu can be found [here](http://mdolab.engin.umich.edu/content/xdsm-overview) or [here](https://github.com/mdolab/pyXDSM). We want to clone pyXDSM as well as grab the required latex packages
-
-  ```
-  cd /mnt/c/<OMDAO_FOLDER>
-  git clone https://github.com/mdolab/pyXDSM.git
-  cd pyXDSM
-  pip install -e .
-  sudo apt-get install texlive-latex-base
-  sudo apt-get install texlive-latex-extra
-  sudo apt-get install texlive-latex-recommended
-  sudo apt-get install texlive-pictures
-  ```
   
-now we need verify we have pyXDSM and the latex packages install run
-  
-  `pdflatex`
-  
-if this returns an error we need to install the full LaTeX packages
-
-  `sudo apt-get install texlive-full`
-
 # XMING
   Things have gotten better with the more recent versions of WSL. We are advising people not to worry about the below instructions unless you are having difficulty running `plt.show()` when running python / matplotlib in bash.
   
