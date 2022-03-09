@@ -50,9 +50,10 @@ Both windows and linux will have full access to this folder so any changes you m
 Do NOT put this folder in /myDocuments/. If you do, you will experiences file premission problems like [this](https://askubuntu.com/questions/1049895/permission-error-copying-files-into-ubuntu-on-windows-with-windows-copy-paste).
 
 # MiniConda
-Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your _<MDAO_FOLDER>_ or some other folder. If you try to download it in `/home/` it will say _Warning: Permission Denied_. 
+Download Miniconda for Linux: note that anaconda itself is no longer free for commercial use :(. You must download the Miniconda file below into your OMDAO folder. If you try to download it in `/home/` it will say _Warning: Permission Denied_. 
 
 ```
+cd /mnt/c/OMDAO
 curl -O https://repo.anaconda.com/miniconda/Miniconda3-4.7.12.1-Linux-x86_64.sh
 bash Miniconda3-4.7.12.1-Linux-x86_64.sh
 
