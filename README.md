@@ -13,15 +13,15 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
 7) Disconnect from the VPN. Some users have had issues with their WSL installations being able to access the internet while connected to the VPN.
 8) From here on out, anytime you see this:
 
-  `this is a command` - that means type a command into the bash promt
+  `this is a command in bash/WSL` 
   
   ```
   this is a series 
-  of commands to be un in bash
+  of commands to be in bash/WSL
   
   ```
   
-  `>>> this is a command in python` - this command is typed into the python command line
+  `>>> this is a command in python`
  
 
 # UPDATES
@@ -85,7 +85,7 @@ The resoultion should be to run `conda install anaconda-clean` and then re-tryin
 
   `python --version`
   
-  example output: `'Python 3.8.12'`
+  example output: _'Python 3.8.12'_
 
 # bashRC
 To activate the environment and open the OMDAO folder every time you open bash, we need to edit bashRC
@@ -159,14 +159,14 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
 
   Example output:
   
-  ```
+  ___
   (mdaowork) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
   SSS...........................................................................  etc
   
   Passed:  1065
   Failed:  0
   Skipped: 153
-  ```
+  ___
   
   Skipped tests happen due to a lack of MPI or other third party software.
   
@@ -180,7 +180,7 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   ```
   example output: 
   
-  ```
+  ___
   (mdaowork) earetski@GRLWL2021061196:/home$ python
   Python 3.8.10 (default, Jun  4 2021, 15:09:15)
   [GCC 7.5.0] :: Anaconda, Inc. on linux
@@ -188,7 +188,7 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   >>> import pyoptsparse; pyoptsparse.__file__
   '/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'
   >>> exit()
-  ```
+  ___
   
   where 
   `'/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'` is your _<OLD_INSTALL_LOCATION>_
@@ -298,11 +298,12 @@ now we need verify we have pyXDSM and the latex packages install run
   `pdflatex`
   
 example output:
-```
+___
 This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
  restricted \write18 enabled.
 **
-```
+___
+
 Hit `ctrl+c` to exit from the window.
 
 If _pdflatex_ returns an error we need to install the full LaTeX packages
@@ -363,7 +364,7 @@ pkg> status
 
   example output: 
   
-  `/home/earetski/anaconda3/envs/mdaowork/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc` this is your _<matplotlibrc file location>_
+  _/home/earetski/anaconda3/envs/mdaowork/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc_ this is your _<matplotlibrc file location>_
 
   now we neeed to edit this file
 
