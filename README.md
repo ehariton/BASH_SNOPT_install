@@ -2,7 +2,7 @@
   How to install Windows Subsystem for Linux (BASH) and SNOPT optimizer on windows PC
   Bash is basically an Ubuntu operating sytsem inside your computer. 
   You can install SNOPT If you have windows 10+. 
-  These install instructions were verified with Windows 10.0.19042
+  Verified to work with Windows 10 build 19042
 
 # BASH
 To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem runs a linux computer on your machine that can access all the same files as windows.
