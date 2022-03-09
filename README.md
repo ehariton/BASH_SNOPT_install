@@ -242,6 +242,7 @@ Install DYMOS which will allow the user to solve time-based ODEs
   git clone https://github.com/OpenMDAO/dymos.git
   cd dymos
   pip install -e .
+  
   ```
 
 
@@ -253,7 +254,8 @@ py XDSM allows for the creation of XDSM diagrams in python using LaTeX libraries
   git clone https://github.com/mdolab/pyXDSM.git
   cd pyXDSM
   pip install -e .
-  sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-pictures
+  sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-pictures -y
+  
   ```
   
 now we need verify we have pyXDSM and the latex packages install run
