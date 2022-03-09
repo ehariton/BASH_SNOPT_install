@@ -35,13 +35,14 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
   You can run this every few months to pull the latest security updates.
   
 # FOLDERS
-Create a directory on your C: drive where we will install everything else and we will refer to this as _<OMDAO_FOLDER>_
+Create a directory on your C: drive where we will install everything else and we will refer to this as the _OMDAO_ folder. If you want to name this something else you'll have to change all the rest of the commands in the walkthrough to reflect your new folder name.
 
-`cd /mnt/c`
+```
+cd /mnt/c
+mkdir OMDAO`
+cd OMDAO
 
-`mkdir <OMDAO_FOLDER>`
-
-`cd <OMDAO_FOLDER>`
+```
 
 you can make this folder named whatever you want, just remember to change it in all the other commands below!!!!!
 Both windows and linux will have full access to this folder so any changes you make on one will be refecleted on the other!
@@ -82,17 +83,17 @@ Then close WSL and reopen it.
   See the help if you can't get this to work
 
 # bashRC
-To activate the environment and open the <OMDAO_FOLDER> every time you open bash, we need to edit bashRC
+To activate the environment and open the OMDAO folder every time you open bash, we need to edit bashRC
 
   `sudo nano ~/.bashrc`
 
-  Scroll down to the bottom then add these four lines. Remember to replace _<OMDAO_FOLDER>_ with your folder name:
+  Scroll down to the bottom then add these four lines:
 
   ```
   ## Always activate mdaowrok environment on startup ##
   conda activate mdaowork
-  ## Always cd into <OMDAO_FOLDER> when bash starts ##
-  cd /mnt/c/<OMDAO_FOLDER>
+  ## Always cd into OMDAO folder when bash starts ##
+  cd /mnt/c/OMDAO
   ```
   
   Then exit and save your changes using the commands found at the bottom of the screen (`ctrl+x`, `y`, `enter`). 
@@ -114,10 +115,10 @@ Then we install plotly which is a useful plotting library. Testflo is used to te
   `pip install plotly testflo`
 
 # OpenMDAO Install
-Use pip to install OpenMDAO from its github repo the following sets of commands will create a folder inside _<OMDAO_FOLDER>_ where OpenMDAO2.0 will be installed
+Use pip to install OpenMDAO from its github repo the following sets of commands will create a folder inside OMDAO folder where OpenMDAO2.0 will be installed
 
   ```
-  cd /mnt/c/<OMDAO_FOLDER>
+  cd /mnt/c/OMDAO
   git clone https://github.com/OpenMDAO/OpenMDAO.git
   cd OpenMDAO
   pip install -e .
@@ -126,7 +127,7 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
   
   Using `pip install -e .`, every time we update a file i.n this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
 
-  Now lets test the openMDAO installation by running testflo in the folder where we installed OpenMDAO e.g. _/mnt/c/<OMDAO_FOLDER>/OpenMDAO_ folder
+  Now lets test the openMDAO installation by running testflo in the folder where we installed OpenMDAO e.g. _/mnt/c/OMDAO/OpenMDAO_ folder
 
   `testflo .`
 
@@ -194,7 +195,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
 2) Get pyoptsparse (a 3rd party optimizer that works well with OpenMDAO)
   
   ```
-  cd /mnt/c/<OMDAO_FOLDER>
+  cd /mnt/c/OMDAO
   git clone https://github.com/mdolab/pyoptsparse
   cd pyoptspare
   python setup.py build_ext --inplace
@@ -207,7 +208,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   If you DO NOT want to instal SNOPT run this:
 
   ```
-  cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
+  cd /mnt/c/OMDAO/pyoptspare
   python setup.py install
   ```
 
@@ -222,12 +223,12 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   
   paste those files into your pysnopt source directory (shown below)
   
-  _c:/<OMDAO_FOLDER>/pyoptsparse/pyoptsparse/pySNOPT/source_
+  _c:/OMDAO/pyoptsparse/pyoptsparse/pySNOPT/source_
 
   now we go back to the bash command line to install pyoptspare which will run SNOPT
   
   ```
-  cd /mnt/c/<OMDAO_FOLDER>/pyoptspare
+  cd /mnt/c/OMDAO/pyoptspare
   python setup.py install
   ```
 
@@ -242,7 +243,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
 Install DYMOS which will allow the user to solve time-based ODEs
 
   ```
-  cd /mnt/c/<OMDAO_FOLDER>
+  cd /mnt/c/OMDAO
   git clone https://github.com/OpenMDAO/dymos.git
   cd dymos
   pip install -e .
@@ -254,7 +255,7 @@ Install DYMOS which will allow the user to solve time-based ODEs
 py XDSM allows for the creation of XDSM diagrams in python using LaTeX libraries. pyXDSM install instructions for ubuntu can be found [here](http://mdolab.engin.umich.edu/content/xdsm-overview) or [here](https://github.com/mdolab/pyXDSM). We want to clone pyXDSM as well as grab the required latex packages
 
   ```
-  cd /mnt/c/<OMDAO_FOLDER>
+  cd /mnt/c/OMDAO
   git clone https://github.com/mdolab/pyXDSM.git
   cd pyXDSM
   pip install -e .
