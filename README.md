@@ -232,7 +232,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   If you DO NOT want to instal SNOPT run this:
 
   ```
-  cd /mnt/c/OMDAO/pyoptspare
+  cd /mnt/c/OMDAO/pyoptsparse
   python setup.py install
   ```
 
