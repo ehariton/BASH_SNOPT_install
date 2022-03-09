@@ -127,7 +127,23 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
   
   ```
   
+  ## Operation Not Permitted Error
+  If you get an _Operation Not Permitted_ [error issue](https://askubuntu.com/questions/1115564/wsl-ubuntu-distro-how-to-solve-operation-not-permitted-on-cloning-repository) when using `git clone` that's because the Windows file system isn't happy with the linux permissions. This typically happens on computers where you're not admin. We're going to have to do a quick workaround which is to "automatically mount your Windows drives under WSL with the metadata option. 
+  
+  `sudo nano /etc/wsl.conf`
+  
+  Then add these lines into that file:
+  
+  ```
+  [automount]
+  options = "metadata"
+  ```
+  
+  Now we need to exit our WSL instance, and shut down all it's background processes as well. You can do this by either Rebooting the whole computer, or using the `wsl --shutdown` command in the regular windows command promt. After this re-open WSL and git cloning should now work
+  
+  ## Test the OpenMDAO Installation
   Using `pip install -e .`, every time we update a file i.n this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
+  
 
   Now lets test the openMDAO installation by running testflo in the folder where we installed OpenMDAO e.g. _/mnt/c/OMDAO/OpenMDAO_ folder
 
