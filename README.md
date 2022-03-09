@@ -159,12 +159,13 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
 
   Example output:
   
-  
-  *(mdaowork) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
-  *SSS...........................................................................  etc
-  *Passed:  1065
-  *Failed:  0
-  *Skipped: 153
+  ```
+  (mdaowork) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
+  SSS...........................................................................  etc
+  Passed:  1065
+  Failed:  0
+  Skipped: 153
+  ```
   
   Skipped tests happen due to a lack of MPI or other third party software.
   
@@ -294,7 +295,11 @@ now we need verify we have pyXDSM and the latex packages install run
   
 example output:
 
-  *This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex) restricted \write18 enabled.*
+  ```
+  This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) 
+  (preloaded format=pdflatex) restricted \write18 enabled.
+  **
+  ```
 
 
 Hit `ctrl+c` to exit from the window.
