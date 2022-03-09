@@ -77,14 +77,14 @@ Then close WSL and reopen it.
   
   ```
   
-If you get the error: _No packages found in current linux-64 channels matching: python 3.8*_. The resoultion should be to run `conda install anaconda-clean` and then re-trying the original command.
+If you get the error: _No packages found in current linux-64 channels matching: python 3.8*_. 
+The resoultion should be to run `conda install anaconda-clean` and then re-trying the original command.
   
   Verify that python 3.8 is installed in this environment
 
   `python --version`
   
   example output: `'Python 3.8.12'`
-  See the help if you can't get this to work
 
 # bashRC
 To activate the environment and open the OMDAO folder every time you open bash, we need to edit bashRC
