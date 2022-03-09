@@ -106,9 +106,9 @@ Miniconda may generate an error when trying to conda install matplotlib. If that
 
   `pip install matplotlib`
 
-Then we install some other useful libraries:
+Then we install plotly which is a useful plotting library. Testflo is used to test components in the OpenMDAO installation:
 
-  `pip install pyDOE2 plotly`
+  `pip install plotly testflo`
 
 # OpenMDAO Install
 Use pip to install OpenMDAO from its github repo the following sets of commands will create a folder inside _<OMDAO_FOLDER>_ where OpenMDAO2.0 will be installed
@@ -120,17 +120,11 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
   pip install -e .
   ```
   
-  Using `pip install -e .`, every time we update a file in this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
+  Using `pip install -e .`, every time we update a file i.n this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
 
+  Now lets test the openMDAO installation by running testflo in the folder where we installed OpenMDAO e.g. _/mnt/c/<OMDAO_FOLDER>/OpenMDAO_ folder
 
-# TestFlo
-This program is used to test the openmdao installation.
-
-  ```
-  pip install testflo
-  cd /mnt/c/<OMDAO_FOLDER>/OpenMDAO
-  testflo .
-  ```
+  `testflo .`
 
   Example output:
   
