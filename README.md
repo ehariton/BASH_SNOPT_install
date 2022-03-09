@@ -118,6 +118,7 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
   git clone https://github.com/OpenMDAO/OpenMDAO.git
   cd OpenMDAO
   pip install -e .
+  
   ```
   
   Using `pip install -e .`, every time we update a file i.n this folder, in will be re-installed. This makes pulling updated version of OpenMDAO as we can just use `git pull` get grab those version. Then this pagage and their libraries are auto-updated so you can reference them in your simulations. If you don't use `-e .` then you'll have to manually re-run `pip install` each time you update the OpenMDAO library. 
@@ -262,7 +263,15 @@ now we need verify we have pyXDSM and the latex packages install run
   
   `pdflatex`
   
-if this returns an error we need to install the full LaTeX packages
+example output:
+```
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+**
+```
+Hit `ctrl+c` to exit from the window.
+
+If _pdflatex_ returns an error we need to install the full LaTeX packages
 
   `sudo apt-get install texlive-full`
 
