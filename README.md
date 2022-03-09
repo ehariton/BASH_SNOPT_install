@@ -159,14 +159,12 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
 
   Example output:
   
-  _
-  (mdaowork) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
-  SSS...........................................................................  etc
   
+  *(mdaowork) earetski@GRLWL2021061196:/mnt/c/OMDAO/OpenMDAO$ testflo .
+  SSS...........................................................................  etc
   Passed:  1065
   Failed:  0
-  Skipped: 153
-  _
+  Skipped: 153*
   
   Skipped tests happen due to a lack of MPI or other third party software.
   
@@ -180,15 +178,13 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   ```
   example output: 
   
-  ___
-  (mdaowork) earetski@GRLWL2021061196:/home$ python
+  *(mdaowork) earetski@GRLWL2021061196:/home$ python
   Python 3.8.10 (default, Jun  4 2021, 15:09:15)
   [GCC 7.5.0] :: Anaconda, Inc. on linux
   Type "help", "copyright", "credits" or "license" for more information.
   >>> import pyoptsparse; pyoptsparse.__file__
   '/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'
-  >>> exit()
-  ___
+  >>> exit()*
   
   where 
   `'/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'` is your _<OLD_INSTALL_LOCATION>_
@@ -200,12 +196,11 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   
   keep trying to locate pyoptsparse, removing it's file location until you get the error:
 
-  ```
-  >>> import pyoptsparse; pyoptsparse.__file__
-    Traceback (most recent call last):
-    File "<stdin>", line 1, in <module>
-    ModuleNotFoundError: No module named 'pyoptsparse'
-  ```
+  *>>> import pyoptsparse; pyoptsparse.__file__
+  Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  ModuleNotFoundError: No module named 'pyoptsparse'*
+  
   now you're ready to continue to a fresh install
   
   
@@ -298,11 +293,9 @@ now we need verify we have pyXDSM and the latex packages install run
   `pdflatex`
   
 example output:
-___
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex)
- restricted \write18 enabled.
-**
-___
+
+  *This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex) restricted \write18 enabled.*
+
 
 Hit `ctrl+c` to exit from the window.
 
