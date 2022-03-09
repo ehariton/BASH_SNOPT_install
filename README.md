@@ -234,6 +234,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   ```
   cd /mnt/c/OMDAO/pyoptsparse
   python setup.py install
+  
   ```
 
 # SNOPT
@@ -254,6 +255,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   ```
   cd /mnt/c/OMDAO/pyoptspare
   python setup.py install
+  
   ```
 
   A huge amount of text will scroll by your screen.
