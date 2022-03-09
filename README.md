@@ -179,13 +179,15 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   ```
   example output: 
   
-  *(mdaowork) earetski@GRLWL2021061196:/home$ python
+  ```
+  (mdaowork) earetski@GRLWL2021061196:/home$ python
   Python 3.8.10 (default, Jun  4 2021, 15:09:15)
   [GCC 7.5.0] :: Anaconda, Inc. on linux
   Type "help", "copyright", "credits" or "license" for more information.
   >>> import pyoptsparse; pyoptsparse.__file__
   '/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'
-  >>> exit()*
+  >>> exit()
+  ```
   
   where 
   `'/home/earetski/miniconda3/lib/python3.8/site-packages/pyoptsparse/__init__.py'` is your _<OLD_INSTALL_LOCATION>_
