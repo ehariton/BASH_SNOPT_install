@@ -285,10 +285,7 @@ For developers we recommend building from source:
 py XDSM allows for the creation of XDSM diagrams in python using LaTeX libraries. pyXDSM install instructions for ubuntu can be found [here](http://mdolab.engin.umich.edu/content/xdsm-overview) or [here](https://github.com/mdolab/pyXDSM). We want to clone pyXDSM as well as grab the required latex packages
 
   ```
-  cd /mnt/c/OMDAO
-  git clone https://github.com/mdolab/pyXDSM.git
-  cd pyXDSM
-  pip install -e .
+  pip install pyXDSM
   sudo apt-get install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-pictures -y
   
   ```
