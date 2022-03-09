@@ -9,9 +9,10 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
 1) Get admin priviledges for your computer. This typically involves a request to your system admin.
 2) Open a command prompt in admin mode and then type `wsl --install -d Ubuntu`
 3) If that fails, try [following this guide](https://docs.microsoft.com/en-us/windows/wsl/install), or doing a manual install using [this guid](https://docs.microsoft.com/en-us/windows/wsl/install-manual) or [this guide](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10)
-5) Once the WSL install is successful, the WSL window will open and ask for a Unix username and password.
-6) ? After setting this, close the WSL window to save these settings.
-7) ? Open WSL in Administrator Mode using. If you do not close the window and re-open, you will have trouble installing miniconda, and pyoptsparse. You're going to want to run as admin for the rest of the install process.
+5) Once the WSL install is successful, the WSL window will open and ask for a Unix username and password. Alternatively, the computer may ask you to restart it. On restart, the WSL window will open after a few minutes and ask for a unix unsername and password.
+6) 
+7) ? After setting this, close the WSL window to save these settings.
+8) ? Open WSL in Administrator Mode using. If you do not close the window and re-open, you will have trouble installing miniconda, and pyoptsparse. You're going to want to run as admin for the rest of the install process.
 ![ubuntu_admin](https://user-images.githubusercontent.com/11527849/157071996-f7d38da7-b126-4a5d-9f6b-a74f277e3f9d.png)
 7) Disconnect from the VPN. Some users have had issues with their WSL installations being able to access the internet while connected to the VPN.
 8) From here on out, anytime you see this:
