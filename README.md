@@ -22,8 +22,7 @@ To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem 
   ```
   
   `>>> this is a command in python` - this command is typed into the python command line
-  
-  _<A_NAME>_ - replace this with a name of your choice (no spaces please)
+ 
 
 # UPDATES
   Now we need to update your WSL system files to the latest versions
