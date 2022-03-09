@@ -189,7 +189,7 @@ Use pip to install OpenMDAO from its github repo the following sets of commands 
 1) We install a bunch of dependencies for pyoptsparse first
 
   ```
-  sudo apt-get install mpi g++ mpich swig -y.
+  sudo apt-get install mpi g++ mpich swig -y
   pip install sqlitedict mpi4py mdolab-baseclasses
   ```
 For some reason bdolab-baseclasses was failing to import automatically so we'll install it directly
