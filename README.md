@@ -7,10 +7,12 @@
 # BASH
 To run SNOPT you will need the Bash for Windows linux subsystem. This subsystem runs a linux computer on your machine that can access all the same files as windows.
 1) Get admin priviledges for your computer. This typically involves a request to your system admin.
-2) Open a command prompt in admin mode and then type `wsl --install -d Ubuntu`
-3) If that fails, try [following this guide](https://docs.microsoft.com/en-us/windows/wsl/install), or doing a manual install using [this guid](https://docs.microsoft.com/en-us/windows/wsl/install-manual) or [this guide](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10)
+2) Open a windows command prompt in admin mode 
+3) Force WSL v1.0 install by typing `wsl --set-default-version 1`. There is a problem with WSL 2.0 and Cisco AnyConnect VPN that prevents internet access.
+4) Install Ubuntu by using the command in the windows command prompt: `wsl --install -d Ubuntu`
+If that fails, try [following this guide](https://docs.microsoft.com/en-us/windows/wsl/install), or doing a manual install using [this guid](https://docs.microsoft.com/en-us/windows/wsl/install-manual) or [this guide](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10)
 5) Once the WSL install is successful, the WSL window will open and ask for a Unix username and password. Alternatively, the computer may ask you to restart it. On restart, the WSL window will open after a few minutes and ask for a unix unsername and password.
-7) Disconnect from the VPN. Some users have had issues with their WSL installations being able to access the internet while connected to the VPN.
+6) Verify that you have WSL 1 installed by opening the windows compand promt and typing `wsl -l -v`
 8) From here on out, anytime you see this:
 
   `this is a command in bash/WSL` 
