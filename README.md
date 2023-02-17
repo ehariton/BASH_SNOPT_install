@@ -225,6 +225,12 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   cd /mnt/c/OMDAO
   git clone https://github.com/mdolab/pyoptsparse
   cd pyoptsparse
+  ```
+
+  There was an update to pyoptsparce that caused the next command to fail so we're going to checkout an old version of pyoptsparse.
+
+  ```
+  git checkout 5f9e836c246dcb8fab62688b5fcc0e023c96c551
   python setup.py build_ext --inplace
   
   ```
