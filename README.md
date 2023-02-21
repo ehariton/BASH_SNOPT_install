@@ -211,7 +211,7 @@ For Developers, we encourage you to clone the OpenMDAO repo and install from the
   
   
 # PyOptSparse Install
-1) We install a bunch of dependencies for pyoptsparse first
+1) We install a bunch of dependencies / compiler for pyoptsparse first
 
   ```
   sudo apt-get install mpi g++ mpich swig -y
@@ -227,23 +227,13 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   cd pyoptsparse
   ```
 
-  There was an update to pyoptsparce that caused the next command to fail so we're going to checkout an old version of pyoptsparse.
-
-  ```
-  git checkout 5f9e836c246dcb8fab62688b5fcc0e023c96c551
-  python setup.py build_ext --inplace
-  
-  ```
-  
-  Notice here we are not using the `pip install -e .` command here. This is because we have to build PyOptSparce from source.
-
   If you want to install SNOPT, go to the next section. 
   
   If you DO NOT want to instal SNOPT run this:
 
   ```
   cd /mnt/c/OMDAO/pyoptsparse
-  python setup.py install
+  pip install -e .
   
   ```
 
@@ -264,7 +254,7 @@ For some reason bdolab-baseclasses was failing to import automatically so we'll 
   
   ```
   cd /mnt/c/OMDAO/pyoptspare
-  python setup.py install
+  pip install -e .
   
   ```
 
