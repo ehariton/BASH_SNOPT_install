@@ -102,6 +102,8 @@ To activate the environment and open the OMDAO folder every time you open bash, 
   conda activate mdaowork
   ## Always cd into OMDAO folder when bash starts ##
   cd /mnt/c/OMDAO
+  ## Required for some newer MPI / libfabric instances
+  export RDMAV_FORK_SAFE=true
   ```
   
   Then exit and save your changes using the commands found at the bottom of the screen (`ctrl+x`, `y`, `enter`). 
